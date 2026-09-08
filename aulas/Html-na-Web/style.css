@@ -1,4 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 1.5rem;
+}
+
+#task-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#task-description {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+#task-description:focus {
+    border-color: #007bff;
+}
+
+#task-button {
+    padding: 0.75rem 1rem;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#task-button:hover {
+    background-color: #0056b3;
+}
+
+#task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Estilização dos itens gerados no JS */
+#task-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #f9f9f9;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #eeeeee;
+}
+
+#task-list li input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+#task-list li span {
+    flex: 1;
+    color: #333333;
+    word-break: break-word;
+}
+
+/* Estilo para tarefas concluídas */
 .completed {
     text-decoration: line-through;
-    font-weight: bold;
+    color: #888888 !important;
+}
+
+/* Botão de remoção gerado no JS */
+#task-list li button {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+#task-list li button:hover {
+    background-color: #bd2130;
 }
