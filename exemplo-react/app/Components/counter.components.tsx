@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-export function Counter() {
+export function Counter(props: any) {
 
     // let count = 0
 
-    const [count, setCount] = useState(0) // Retorna um arry [variavel, função]
+    const [count, setCount] = useState(props.initialValue ?? 0) // Retorna um arry [variavel, função]
 
 
 
@@ -16,14 +16,25 @@ export function Counter() {
         console.log("count");
     }
 
-    function decrementar() {
+    function incrementarOuDecrementar() {
 
         if (count > 0) {
 
             setCount (count - 1);
-        } 
+
+        }
 
         console.log(count);
+    }
+
+    function zera() {
+        setCount(count - count)
+    }
+
+    function randomizar() {
+        const randomNumero = Math.floor(Math.random() * 100) + 1
+
+        setCount(randomNumero)
     }
 
     return (
@@ -31,18 +42,23 @@ export function Counter() {
             <h1 className='text-lg font-bold'>
                 {count}
             </h1>
+            <div className='flex gap-2'>
+                 <button className='btn btn_primario' onClick={incrementar}>
+                    Incrementar
+                </button>
 
-            <button className='btn btn_primario' onClick={incrementar}>
-                Incrementar
-            </button>
+                <button className='btn btn_secundario' onClick={incrementarOuDecrementar}>
+                    Decrementar
+                </button>
 
-            <button className='btn btn_secundario'>
-                Botão de exemplo
-            </button>
+                <button className='btn btn_danger' onClick={zera}>
+                    Zera
+                </button>
 
-            <button className='btn btn_danger' onClick={decrementar}>
-                Decrementar
-            </button>
+                <button className='btn btn_success' onClick={randomizar}>
+                    Randomizar
+                </button>
+            </div>
         </div>
     );
 }

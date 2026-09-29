@@ -42,4 +42,8 @@ body {
   .btn_danger {
     @apply bg-red-500 hover:bg-red-600 text-white;
   }
+
+  .btn_success {
+    @apply bg-green-600 hover:bg-green-700 text-white;
+  }
 }
