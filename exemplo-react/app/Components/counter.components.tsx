@@ -1,5 +1,6 @@
 "use client";
 
+import { Minus, Plus, Shuffle, X } from "lucide-react";
 import { useState } from "react";
 
 export function Counter(props: any) {
@@ -44,19 +45,19 @@ export function Counter(props: any) {
             </h1>
             <div className='flex gap-2'>
                  <button className='btn btn_primario' onClick={incrementar}>
-                    Incrementar
+                    <Plus/>
                 </button>
 
                 <button className='btn btn_secundario' onClick={incrementarOuDecrementar}>
-                    Decrementar
+                    <Minus/>
                 </button>
 
                 <button className='btn btn_danger' onClick={zera}>
-                    Zera
+                    <X/>
                 </button>
 
                 <button className='btn btn_success' onClick={randomizar}>
-                    Randomizar
+                    <Shuffle/>
                 </button>
             </div>
         </div>
