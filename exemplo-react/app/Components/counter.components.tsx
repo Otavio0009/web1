@@ -6,7 +6,8 @@ import { useState } from "react";
 export function Counter(props: any) {
 
     // let count = 0
-
+    
+    //Hooks são funções especiaeis que permite adicionar funcionalidades
     const [count, setCount] = useState(props.initialValue ?? 0) // Retorna um arry [variavel, função]
 
 
