@@ -40,7 +40,7 @@ export function Counter(props: any) {
     }
 
     return (
-        <div className='flex flex-col items-start gap-2'> 
+        <div className='counter-container'> 
             <h1 className='text-lg font-bold'>
                 {count}
             </h1>

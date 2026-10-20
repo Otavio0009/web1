@@ -1,12 +1,19 @@
-import Link from "next/link";
+import { MenuItem } from "./menuItem.components";
 
-export default function Menu() {
+export default function Menu(props: any) {
+
+  type MenuItem = {
+    items: any[]
+  }
+
   return (
     <div>
         <ul>
-            <Link href="/"><li>Inicio</li></Link>
-            <Link href="/Contador"><li>Contador</li></Link>
-            <Link href="/Todo-list"><li>Todo-List</li></Link>
+            {props.items.map((item: any) => {
+              return (
+                <MenuItem key={item.link} text={item.text} link={item.link} icon={item.icon} />
+              )
+            })}
           </ul>
     </div>
   )
