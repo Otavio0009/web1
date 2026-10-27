@@ -12,11 +12,17 @@ export function TodoItem(props: TodoItemProps) {
     const onCompletd = props.onCompletd
     const onDelete = props.onDelete
 
+    const todoTextStyle = todo.completed ? "line-through" : "";
+
     return (
         <li className="list">
-            <input type="checkbox" onChange={() => onCompletd(todo.id)}/>
-            <span className="text-lg flex-1">
-                    Minha lista  
+            <input
+                type="checkbox"
+                onChange={() => onCompletd(todo.id)}
+                checked={todo.completed}
+            />
+            <span className={`text-lg flex-1 ${todoTextStyle}`}>
+                {todo.text}
             </span>
             <button onClick={() => onDelete(todo.id)} className="btn btn_danger">
                 Excluir
