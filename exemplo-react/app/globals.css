@@ -71,4 +71,36 @@ body {
   .ul-list {
     @apply flex flex-col gap-2 py-4
   }
+
+    .painel-tarefas {
+    @apply mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm;
+  }
+
+  .painel-contadores {
+    @apply grid grid-cols-3;
+  }
+
+  .painel-item {
+    @apply flex flex-col items-center gap-1 border-r border-gray-200 px-2 py-4 last:border-r-0;
+  }
+
+  .painel-numero {
+    @apply text-3xl font-bold text-gray-800;
+  }
+
+  .painel-numero-pendente {
+    @apply text-amber-600;
+  }
+
+  .painel-numero-concluida {
+    @apply text-green-600;
+  }
+
+  .painel-rotulo {
+    @apply text-sm text-gray-500;
+  }
+
+  .painel-mensagem {
+    @apply border-t border-green-200 bg-green-50 px-4 py-3 text-center text-sm font-medium text-green-800;
+  }
 }

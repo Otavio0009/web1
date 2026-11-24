@@ -1,25 +1,26 @@
 const ServiceStorage = {
+    get<T>(key: string): T | null {
+        if (typeof window === "undefined") return null;
 
-    get<T>(key: string): T | null{
-        const content = localStorage.getItem(key)
+        const content = localStorage.getItem(key);
 
-        if(content) {
-            return JSON.parse(content) as T
-                
-            }
+        if (!content) return null;
 
-            return null
-        },
+        try {
+            return JSON.parse(content) as T;
+        } catch {
+            localStorage.removeItem(key);
+            return null;
+        }
+    },
 
-    set<T> (key: string, value: T): void {
-        localStorage.setItem(key, JSON.stringify(value))
+    set<T>(key: string, value: T): void {
+        localStorage.setItem(key, JSON.stringify(value));
     },
 
     clear(): void {
         localStorage.clear();
     },
-
-}
-
+};
 
 export default ServiceStorage;

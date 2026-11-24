@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Pagina from "../Components/page.components";
 import { TodoForm } from "../Components/Todo-list/todo-form.components";
 import { TodoList } from "../Components/Todo-list/todo-list.component";
+import { TodoStats } from "../Components/Todo-list/todo-stats.components";
 import { Todo } from "../Components/Todo-list/todo.types";
 import ServiceStorage from "../service/storage.service";
 
@@ -13,6 +14,12 @@ export default function TodoListPage() {
 
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isLoded, setIsLoded] = useState(false);
+
+  // Valores derivados de "todos": não precisam de estado próprio
+  const total = todos.length;
+  const concluidas = todos.filter((todo) => todo.completed).length;
+  const pendentes = todos.filter((todo) => !todo.completed).length;
+  const todasConcluidas = total > 0 && todos.every((todo) => todo.completed);
 
   useEffect(() => {
     const storageTodos = ServiceStorage.get<Todo[]>(STORED_TODO_KEY);
@@ -29,6 +36,20 @@ export default function TodoListPage() {
       ServiceStorage.set<Todo[]>(STORED_TODO_KEY, todos);
     }
   }, [todos, isLoded]);
+
+  // Mensagem no console quando todas as tarefas forem concluídas
+  useEffect(() => {
+    if (todasConcluidas) {
+      console.log("Todas as tarefas foram concluídas!");
+    }
+  }, [todasConcluidas]);
+
+  // Desafio extra: título da página
+  useEffect(() => {
+    document.title = todasConcluidas
+      ? "Parabéns! Todas as tarefas concluídas!"
+      : "Minha TodoList";
+  }, [todasConcluidas]);
 
   function nextId(): number {
     return todos.reduce((max, todo) => {
@@ -74,8 +95,14 @@ export default function TodoListPage() {
 
   return (
     <Pagina titulo="TodoList" subtitulo="Exemplo de Todo-list no React!">
+      <TodoStats
+        total={total}
+        pendentes={pendentes}
+        concluidas={concluidas}
+        todasConcluidas={todasConcluidas}
+      />
       <TodoForm addTodo={addTodo} />
-      <TodoList 
+      <TodoList
         todos={todos}
         onComplet={onComplet}
         onDelete={onDelete}
